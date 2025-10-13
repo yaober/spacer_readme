@@ -33,20 +33,4 @@ Documentation Overview
    installation
    quick_start
    data_preparation
-   build_model/index
-
----
-
-Build Your Own SPACER Model
----------------------------
-
-SPACER allows users to train their own models on customized datasets.  
-This process involves three main stages: **data loading**, **training**, and **prediction**.
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Model Development Guide
-
-   build_model/data_loading
-   build_model/training
-   build_model/prediction
+   build_model
