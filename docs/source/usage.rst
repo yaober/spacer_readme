@@ -6,29 +6,44 @@ Usage
 Installation
 ------------
 
-To use Lumache, first install it using pip:
+To use **SPACER**, we recommend setting up a clean Conda environment.
 
 .. code-block:: console
 
-   (.venv) $ pip install lumache
+   # Create environment
+   $ conda create -n spacer python=3.8
+   $ conda activate spacer
 
-Creating recipes
-----------------
+   # Install core dependencies
+   (spacer) $ pip install torch==2.3.1 numpy==1.26.4 pandas==2.2.2 \
+                    scanpy==1.10.2 scikit-learn==1.5.1 scipy==1.13.1 tqdm==4.66.4
 
-To retrieve a list of random ingredients,
-you can use the ``lumache.get_random_ingredients()`` function:
+Next, clone the SPACER repository and install the package:
 
-.. autofunction:: lumache.get_random_ingredients
+.. code-block:: console
 
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :py:func:`lumache.get_random_ingredients`
-will raise an exception.
+   (spacer) $ git clone https://github.com/yaober/SPACER.git
+   (spacer) $ cd SPACER
+   (spacer) $ pip install -e .
 
-.. autoexception:: lumache.InvalidKindError
+After installation, SPACER can be imported in Python as a standard module.
 
-For example:
+.. code-block:: python
 
->>> import lumache
->>> lumache.get_random_ingredients()
-['shells', 'gorgonzola', 'parsley']
+   import spacer
 
+   model = spacer.load_model("SPACER-v1")
+   model.fit(data)
+
+---
+
+Reference
+---------
+
+For detailed methodological explanations and biological case studies, 
+please refer to the publication section of the documentation.
+
+.. note::
+
+   SPACER is under active development.
+   The current release (v1.0) supports mouse and human high-definition spatial transcriptomics datasets.
