@@ -2,12 +2,12 @@
 
 # -- Project information
 
-project = 'Lumache'
-copyright = '2021, Graziella'
+project = 'SPACER'
+copyright = '2025, Jia Yao and Tao Wang'
 author = 'Graziella'
 
-release = '0.1'
-version = '0.1.0'
+release = '1.0'
+version = '1.0.0'
 
 # -- General configuration
 
@@ -18,6 +18,7 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
 ]
+
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
@@ -30,6 +31,14 @@ templates_path = ['_templates']
 # -- Options for HTML output
 
 html_theme = 'sphinx_rtd_theme'
+html_logo = "_static/spacer_logo.png"
+html_favicon = "_static/favicon.ico"  # optional
+
+html_theme_options = {
+    'logo_only': True,         
+    'display_version': False,  
+}
+
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
