@@ -8,4 +8,4 @@ Please run this example interactively in a Jupyter Notebook:
 .. toctree::
    :maxdepth: 1
 
-   notebook/train.ipynb
+   notebook/train
