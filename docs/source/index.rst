@@ -10,9 +10,6 @@ Welcome to SPACER's documentation!
 developed to elucidate the molecular and spatial determinants of cellular recruitment and engagement 
 within tissue microenvironments.
 
-SPACER integrates high-dimensional spatial transcriptomics data with biologically informed multi-instance learning 
-to model how cells interact and localize in complex tissues such as tumors and inflamed hearts.
-
 For installation instructions and getting started examples, please see below.
 
 .. note::

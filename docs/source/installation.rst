@@ -47,5 +47,6 @@ After downloading , SPACER can be imported:
 
 .. note::
 
-   SPACER requires Python ≥3.8 and PyTorch ≥2.3.  
-   GPU acceleration is recommended for model training.
+  SPACER requires Python ≥3.8 and PyTorch ≥2.3.  
+  GPU acceleration is recommended for model training. However, GPU usage is **not mandatory** — the model can also be trained on CPUs.  
+  We recommend having at least **256 GB of system memory (RAM)** if running on CPU, to ensure smooth data loading and model optimization during training.
