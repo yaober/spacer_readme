@@ -3,12 +3,9 @@ Quick Start
 
 This guide provides a minimal example to run SPACER with your own spatial transcriptomics dataset.
 
-.. code-block:: python
+You can also run this example interactively in a Jupyter Notebook:
 
-   import spacer
-   adata = spacer.load_data("sample_visium_hd.h5ad")
-   model = spacer.SPACERModel()
-   model.fit(adata)
-   model.predict(adata)
+.. toctree::
+   :maxdepth: 1
 
-For detailed instructions, refer to the “Build Your Own SPACER Model” section.
+   notebooks/train.ipynb

@@ -28,6 +28,6 @@ Documentation Overview
    :caption: Main Sections
 
    installation
-   quick_start
    data_preparation
+   quick_start
    build_model
