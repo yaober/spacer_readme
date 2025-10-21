@@ -1,16 +1,16 @@
 Quick Start
 ===========
 
-This guide shows how to train the **SPACER** model directly from the command line 
+This guide shows how to train the **spacer** model directly from the command line 
 using the provided `train.py` script.  
 This approach is ideal for batch experiments or server environments without notebooks.
 
 ---
 
-Running SPACER from the Command Line
+Running spacer from the Command Line
 ------------------------------------
 
-After installation, navigate to your SPACER directory and run:
+After installation, navigate to your spacer directory and run:
 
 .. code-block:: console
 
@@ -43,7 +43,7 @@ The following command-line arguments are supported by `train.py`:
 +----------------------+---------------------------------------------------------------+
 | `--reference_gene`   | Path to a CSV file listing all reference genes.               |
 +----------------------+---------------------------------------------------------------+
-| `--output_dir`       | Directory where models, metrics, and SPACER scores are saved. |
+| `--output_dir`       | Directory where models, metrics, and spacer scores are saved. |
 +----------------------+---------------------------------------------------------------+
 | `--immune_cell`      | Immune cell type used as bag centers (default: `tcell`).      |
 +----------------------+---------------------------------------------------------------+
@@ -70,13 +70,14 @@ Script Overview
 The `train.py` script performs the following steps:
 
 1. **Load Reference Genes**  
-   Reads the list of all genes from the specified reference file (`reference_gene`).
+   Reads the list of all genes from the specified reference file (`reference_gene`).In this study we use all human/mouse genes as our reference geneset. All human geens are provided in the `data/` folder of the repository:
+   - `data/human_reference_genes.csv`
 
 2. **Initialize the Model**  
    Builds a `MIL` (Multi-Instance Learning) model with modules for:
-   - distance encoding  
+   - distance attention  
    - gene expression weighting  
-   - immunogenicity scoring
+   - spacer moudle scoring
 
 3. **Create Dataset and DataLoaders**  
    Loads the bag-level dataset via `BagsDataset`, then splits it into 70% training and 30% validation.
@@ -91,9 +92,9 @@ The `train.py` script performs the following steps:
 6. **Log Training Metrics**  
    Saves epoch-level metrics (`train_loss`, `val_loss`, `val_AUROC`) to `training_metrics.csv`.
 
-7. **Track SPACER Scores**  
+7. **Track spacer Scores**  
    For each epoch, saves `spacer_score_changes_epoch_X.csv`,  
-   showing gene-level SPACER scores before and after training.
+   showing gene-level spacer scores before and after training.
 
 8. **Final Model Output**  
    The fully trained model is stored as `final_model.pth` in your output directory.
@@ -123,5 +124,5 @@ score shifts during training, sorted by magnitude.
 Tips
 ----
 
-- **GPU Acceleration**: SPACER automatically uses CUDA if available.  
-  You can verify this in the log output:
+- **GPU Acceleration**: spacer automatically uses CUDA if available.  
+  You can verify this in the log output.

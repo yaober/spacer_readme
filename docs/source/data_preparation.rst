@@ -1,7 +1,7 @@
 Data Preparation
 ================
 
-Before training spacer, prepare your spatial transcriptomics dataset in a `.h5ad` format compatible with **Scanpy**.  
+Before training **spacer**, prepare your spatial transcriptomics dataset in a `.h5ad` format compatible with **Scanpy**.  
 This section describes the preprocessing, annotation, and structure requirements for input data.
 
 ---
@@ -37,7 +37,7 @@ Required Data Structure
 
 spacer requires the `.h5ad` object to contain the following essential fields:
 
-- **Expression matrix (`adata.X`)**: normalized and log-transformed gene expression values.
+- **Expression matrix (`adata.X`)**: normalized and log-transformed gene expression values.  
 - **Metadata table (`adata.obs`)**: must contain the following columns:
 
   +----------------+--------------------------------------------------------------+
@@ -50,12 +50,12 @@ spacer requires the `.h5ad` object to contain the following essential fields:
   |                |  - `1` → recruiting cell                                     |
   |                |  - `2` → engaging cell (customizable, e.g., T/B/macrophage)  |
   +----------------+--------------------------------------------------------------+
-  | `<EngagingTag>`  | Binary indicator for target engaging cell type (1 = target)    |
+  | `<EngagingTag>`| Binary indicator for whether the cell at the center of the   |
+                     bag belongs to the target engaging cell type (1) or not (0)  |
   +----------------+--------------------------------------------------------------+
 
-The `<EngagingTag>` column is determined by your study focus.  
-spacer uses it to define the **center cell type** for neighborhood (“bag”) construction.  
-Below is the default mapping used in spacer:
+The `<EngagingTag>` column defines which cells will serve as the **center** for each neighborhood (“bag”) in spacer.  
+Below is the default mapping used in our study:
 
 .. code-block:: python
 
@@ -71,3 +71,50 @@ Below is the default mapping used in spacer:
 For example, if you are studying **T-cell recruitment**, the column name in `adata.obs` should be `"T"`,  
 and its values should be `1` for T cells and `0` for all other cells.
 
+---
+
+Customizing the Mapping
+-----------------------
+
+In this work, we used the above mapping to ensure **consistent annotation across datasets** involving multiple stromal and immune cell types.  
+Each key in the mapping corresponds to a general immune or stromal population, while the assigned value (e.g., `"T"`, `"B"`, `"Macrophage"`)  
+serves as a compact label for downstream modeling and visualization.  
+
+However, this mapping is **fully customizable**.  
+Users can freely modify or extend it to match their experimental context or cell annotation schema.  
+For instance, if you are analyzing **brain tissues**, you could define:
+
+.. code-block:: python
+
+   mapping = {
+       'microglia': 'Microglia',
+       'astrocyte': 'Astrocyte',
+       'oligodendrocyte': 'Oligodendrocyte',
+   }
+
+spacer will automatically adapt its bag construction and learning process to your new mapping.  
+The only requirement is that the corresponding binary column (e.g., `"Microglia"`) exists in `adata.obs`  
+with values `1` for target cells and `0` otherwise.
+
+Customizing the Mapping
+-----------------------
+
+In this work, we used the above mapping to ensure **consistent annotation across datasets** involving multiple stromal and immune cell types.  
+Each key in the mapping corresponds to a general immune or stromal population, while the assigned value (e.g., `"T"`, `"B"`, `"Macrophage"`)  
+serves as a compact label for downstream modeling and visualization.  
+
+However, this mapping is **fully customizable**.  
+Users can freely modify or extend it to match their experimental context or cell annotation schema.  
+For instance, if you are analyzing **brain tissues**, you could define:
+
+.. code-block:: python
+
+   mapping = {
+       'microglia': 'Microglia',
+       'astrocyte': 'Astrocyte',
+       'oligodendrocyte': 'Oligodendrocyte',
+   }
+
+spacer will automatically adapt its bag construction and learning process to your new mapping.  
+The only requirement is that the corresponding binary column (e.g., `"Microglia"`) exists in `adata.obs`  
+with values `1` for target cells and `0` otherwise.
