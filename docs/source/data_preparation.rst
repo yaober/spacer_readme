@@ -9,7 +9,7 @@ This section describes the preprocessing, annotation, and structure requirements
 Preprocessing Workflow
 ----------------------
 
-spacer expects a **Scanpy AnnData** object (`adata`) as input.  
+Spacer expects a **Scanpy AnnData** object (`adata`) as input.  
 You can generate this file from raw count matrices using **Scanpy** following these preprocessing steps:
 
 .. code-block:: python
@@ -35,7 +35,7 @@ You can generate this file from raw count matrices using **Scanpy** following th
 Required Data Structure
 -----------------------
 
-spacer requires the `.h5ad` object to contain the following essential fields:
+Spacer requires the `.h5ad` object to contain the following essential fields:
 
 - **Expression matrix (`adata.X`)**: normalized and log-transformed gene expression values.  
 - **Metadata table (`adata.obs`)**: must contain the following columns:
@@ -94,7 +94,7 @@ For instance, if you are analyzing **brain tissues**, you could define:
        'oligodendrocyte': 'Oligodendrocyte',
    }
 
-spacer will automatically adapt its bag construction and learning process to your new mapping.  
+Spacer will automatically adapt its bag construction and learning process to your new mapping.  
 The only requirement is that the corresponding binary column (e.g., `"Microglia"`) exists in `adata.obs`  
 with values `1` for target cells and `0` otherwise.
 

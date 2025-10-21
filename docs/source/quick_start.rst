@@ -7,7 +7,7 @@ This approach is ideal for batch experiments or server environments without note
 
 ---
 
-Running spacer from the Command Line
+Running Spacer from the Command Line
 ------------------------------------
 
 After installation, navigate to your spacer directory and run:
@@ -92,7 +92,7 @@ The `train.py` script performs the following steps:
 6. **Log Training Metrics**  
    Saves epoch-level metrics (`train_loss`, `val_loss`, `val_AUROC`) to `training_metrics.csv`.
 
-7. **Track spacer Scores**  
+7. **Track Spacer Scores**  
    For each epoch, saves `spacer_score_changes_epoch_X.csv`,  
    showing gene-level spacer scores before and after training.
 

@@ -23,7 +23,7 @@ Install the required Python dependencies:
 
 ---
 
-Installing spacer
+Installing Spacer
 -----------------
 
 Clone the official spacer repository and install the package in editable mode:
