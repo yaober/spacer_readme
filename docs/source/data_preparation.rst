@@ -97,25 +97,3 @@ spacer will automatically adapt its bag construction and learning process to you
 The only requirement is that the corresponding binary column (e.g., `"Microglia"`) exists in `adata.obs`  
 with values `1` for target cells and `0` otherwise.
 
-Customizing the Mapping
------------------------
-
-In this work, we used the above mapping to ensure **consistent annotation across datasets** involving multiple stromal and immune cell types.  
-Each key in the mapping corresponds to a general immune or stromal population, while the assigned value (e.g., `"T"`, `"B"`, `"Macrophage"`)  
-serves as a compact label for downstream modeling and visualization.  
-
-However, this mapping is **fully customizable**.  
-Users can freely modify or extend it to match their experimental context or cell annotation schema.  
-For instance, if you are analyzing **brain tissues**, you could define:
-
-.. code-block:: python
-
-   mapping = {
-       'microglia': 'Microglia',
-       'astrocyte': 'Astrocyte',
-       'oligodendrocyte': 'Oligodendrocyte',
-   }
-
-spacer will automatically adapt its bag construction and learning process to your new mapping.  
-The only requirement is that the corresponding binary column (e.g., `"Microglia"`) exists in `adata.obs`  
-with values `1` for target cells and `0` otherwise.
