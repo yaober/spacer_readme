@@ -6,7 +6,7 @@ Installation
 Setting up the Environment
 --------------------------
 
-To use **SPACER**, it is recommended to create a clean Conda environment.
+To use **spacer**, it is recommended to create a clean Conda environment.
 
 .. code-block:: console
 
@@ -23,17 +23,17 @@ Install the required Python dependencies:
 
 ---
 
-Installing SPACER
+Installing spacer
 -----------------
 
-Clone the official SPACER repository and install the package in editable mode:
+Clone the official spacer repository and install the package in editable mode:
 
 .. code-block:: console
 
    (spacer) $ git clone https://github.com/yaober/SPACER.git
    (spacer) $ cd SPACER
 
-After downloading , SPACER can be imported:
+After downloading , spacer can be imported:
 
 .. code-block:: python
 
@@ -47,6 +47,6 @@ After downloading , SPACER can be imported:
 
 .. note::
 
-  SPACER requires Python ≥3.8 and PyTorch ≥2.3.  
+  spacer requires Python ≥3.8 and PyTorch ≥2.3.  
   GPU acceleration is recommended for model training. However, GPU usage is **not mandatory** — the model can also be trained on CPUs.  
   We recommend having at least **256 GB of system memory (RAM)** if running on CPU, to ensure smooth data loading and model optimization during training.

@@ -1,7 +1,7 @@
 Data Preparation
 ================
 
-Before training SPACER, prepare your spatial transcriptomics dataset in a `.h5ad` format compatible with **Scanpy**.  
+Before training spacer, prepare your spatial transcriptomics dataset in a `.h5ad` format compatible with **Scanpy**.  
 This section describes the preprocessing, annotation, and structure requirements for input data.
 
 ---
@@ -9,7 +9,7 @@ This section describes the preprocessing, annotation, and structure requirements
 Preprocessing Workflow
 ----------------------
 
-SPACER expects a **Scanpy AnnData** object (`adata`) as input.  
+spacer expects a **Scanpy AnnData** object (`adata`) as input.  
 You can generate this file from raw count matrices using **Scanpy** following these preprocessing steps:
 
 .. code-block:: python
@@ -35,7 +35,7 @@ You can generate this file from raw count matrices using **Scanpy** following th
 Required Data Structure
 -----------------------
 
-SPACER requires the `.h5ad` object to contain the following essential fields:
+spacer requires the `.h5ad` object to contain the following essential fields:
 
 - **Expression matrix (`adata.X`)**: normalized and log-transformed gene expression values.
 - **Metadata table (`adata.obs`)**: must contain the following columns:
@@ -46,16 +46,16 @@ SPACER requires the `.h5ad` object to contain the following essential fields:
   | `X`, `Y`       | Spatial coordinates (in microns or pixel units) of each cell |
   +----------------+--------------------------------------------------------------+
   | `cell_type`    | Integer-encoded major cell class                             |
-  |                |  - `0` → non-tumor, non-immune cell                          |
-  |                |  - `1` → tumor cell                                          |
-  |                |  - `2` → immune cell (customizable, e.g., T/B/macrophage)    |
+  |                |  - `0` → other cell                                          |
+  |                |  - `1` → recruiting cell                                     |
+  |                |  - `2` → engaging cell (customizable, e.g., T/B/macrophage)  |
   +----------------+--------------------------------------------------------------+
-  | `<ImmuneTag>`  | Binary indicator for target immune cell type (1 = target)    |
+  | `<EngagingTag>`  | Binary indicator for target engaging cell type (1 = target)    |
   +----------------+--------------------------------------------------------------+
 
-The `<ImmuneTag>` column is determined by your study focus.  
-SPACER uses it to define the **center cell type** for neighborhood (“bag”) construction.  
-Below is the default mapping used in SPACER:
+The `<EngagingTag>` column is determined by your study focus.  
+spacer uses it to define the **center cell type** for neighborhood (“bag”) construction.  
+Below is the default mapping used in spacer:
 
 .. code-block:: python
 

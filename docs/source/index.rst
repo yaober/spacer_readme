@@ -1,12 +1,12 @@
-Welcome to SPACER's documentation!
+Welcome to spacer's documentation!
 ===================================
 
 .. image:: _static/model.png
    :align: center
    :width: 600px
-   :alt: SPACER model overview
+   :alt: spacer model overview
 
-**SPACER** (Spatial Analysis of Cellular Engagement and Recruitment) is a multi-instance deep learning framework 
+**spacer** (Spatial Analysis of Cellular Engagement and Recruitment) is a multi-instance deep learning framework 
 developed to elucidate the molecular and spatial determinants of cellular recruitment and engagement 
 within tissue microenvironments.
 
@@ -16,7 +16,7 @@ For installation instructions and getting started examples, please see below.
 
    This project is under active development.  
    For questions, feature requests, or contributions, please visit the 
-   `SPACER GitHub repository <https://github.com/yaober/SPACER>`_.
+   `spacer GitHub repository <https://github.com/yaober/spacer>`_.
 
 ---
 
