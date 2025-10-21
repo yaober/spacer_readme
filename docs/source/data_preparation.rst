@@ -46,13 +46,14 @@ spacer requires the `.h5ad` object to contain the following essential fields:
   | `X`, `Y`       | Spatial coordinates (in microns or pixel units) of each cell |
   +----------------+--------------------------------------------------------------+
   | `cell_type`    | Integer-encoded major cell class                             |
-  |                |  - `0` → other cell                                          |
-  |                |  - `1` → recruiting cell                                     |
-  |                |  - `2` → engaging cell (customizable, e.g., T/B/macrophage)  |
+  |                | - `0` → other cell                                           |
+  |                | - `1` → recruiting cell                                      |
+  |                | - `2` → engaging cell (customizable, e.g., T/B/macrophage)   |
   +----------------+--------------------------------------------------------------+
   | `<EngagingTag>`| Binary indicator for whether the cell at the center of the   |
-                     bag belongs to the target engaging cell type (1) or not (0)  |
+  |                | bag belongs to the target engaging cell type (`1`) or not (`0`) |
   +----------------+--------------------------------------------------------------+
+
 
 The `<EngagingTag>` column defines which cells will serve as the **center** for each neighborhood (“bag”) in spacer.  
 Below is the default mapping used in our study:
