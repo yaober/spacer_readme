@@ -57,7 +57,7 @@ The following command-line arguments are supported by `train.py`:
 +----------------------+---------------------------------------------------------------+
 | `--max_instances`    | Maximum number of instances per bag (optional).               |
 +----------------------+---------------------------------------------------------------+
-| `--n_genes`          | Top N of recruiting cell highly expressed genes to include.  |
+| `--n_genes`          | Top N of recruiting cell highly expressed genes to include.   |
 +----------------------+---------------------------------------------------------------+
 | `--selection`        | Select `"positive (induce)"` or `"negative (repel)"` training.|
 +----------------------+---------------------------------------------------------------+

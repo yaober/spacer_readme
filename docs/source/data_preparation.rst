@@ -40,19 +40,20 @@ spacer requires the `.h5ad` object to contain the following essential fields:
 - **Expression matrix (`adata.X`)**: normalized and log-transformed gene expression values.  
 - **Metadata table (`adata.obs`)**: must contain the following columns:
 
-  +----------------+--------------------------------------------------------------+
-  | **Column**     | **Description**                                              |
-  +================+==============================================================+
-  | `X`, `Y`       | Spatial coordinates (in microns or pixel units) of each cell |
-  +----------------+--------------------------------------------------------------+
-  | `cell_type`    | Integer-encoded major cell class                             |
-  |                | - `0` → other cell                                           |
-  |                | - `1` → recruiting cell                                      |
-  |                | - `2` → engaging cell (customizable, e.g., T/B/macrophage)   |
-  +----------------+--------------------------------------------------------------+
-  | `<EngagingTag>`| Binary indicator for whether the cell at the center of the   |
-  |                | bag belongs to the target engaging cell type (`1`) or not (`0`) |
-  +----------------+--------------------------------------------------------------+
++--------------------+--------------------------------------------------------------------------+
+| **Column**         | **Description**                                                          |
++====================+==========================================================================+
+| `X`, `Y`           | Spatial coordinates (in microns or pixel units) of each cell.            |
++--------------------+--------------------------------------------------------------------------+
+| `cell_type`        | Integer-encoded major cell class:                                        |
+|                    | - `0` → other cell                                                       |
+|                    | - `1` → recruiting cell                                                  |
+|                    | - `2` → engaging cell (customizable, e.g., T/B/macrophage)               |
++--------------------+--------------------------------------------------------------------------+
+| `<EngagingTag>`    | Binary indicator for whether the cell at the center of the bag belongs   |
+|                    | to the target engaging cell type (`1`) or not (`0`).                     |
++--------------------+--------------------------------------------------------------------------+
+
 
 
 The `<EngagingTag>` column defines which cells will serve as the **center** for each neighborhood (“bag”) in spacer.  

@@ -33,7 +33,7 @@ Clone the official spacer repository and install the package in editable mode:
    (spacer) $ git clone https://github.com/yaober/SPACER.git
    (spacer) $ cd SPACER
 
-After downloading , spacer can be imported:
+After downloading, spacer can be imported:
 
 .. code-block:: python
 
@@ -42,11 +42,11 @@ After downloading , spacer can be imported:
 
    dataset = BagsDataset( ... )
    model = MIL( ... )
----
 
+---
 
 .. note::
 
-  spacer requires Python ≥3.8 and PyTorch ≥2.3.  
-  GPU acceleration is recommended for model training. However, GPU usage is **not mandatory** — the model can also be trained on CPUs.  
-  We recommend having at least **256 GB of system memory (RAM)** if running on CPU, to ensure smooth data loading and model optimization during training.
+   spacer requires Python ≥3.8 and PyTorch ≥2.3.  
+   GPU acceleration is recommended for model training. However, GPU usage is **not mandatory** — the model can also be trained on CPUs.  
+   We recommend having at least **256 GB of system memory (RAM)** if running on CPU, to ensure smooth data loading and model optimization during training.

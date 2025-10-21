@@ -51,7 +51,7 @@ html_favicon = "_static/favicon.ico"
 
 html_theme_options = {
     'logo_only': True,
-    'display_version': False,
+    'display_version': True,
 }
 
 # -- Options for EPUB output -------------------------------------------------
