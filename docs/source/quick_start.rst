@@ -18,14 +18,14 @@ After installation, navigate to your spacer directory and run:
        --data path/to/training_data.h5ad \
        --reference_gene path/to/reference_genes.csv \
        --output_dir results/ \
-       --immune_cell tcell \
+       --engage_cell tcell \
        --learning_rate 0.0001 \
        --num_epochs 1000 \
        --patience 5 \
        --delta 0.001 \
        --max_instances 500 \
        --n_genes 10000 \
-       --selection positive
+       --direction positive
 
 The script will automatically detect and use a GPU if available (CUDA).
 
@@ -36,31 +36,31 @@ Argument Descriptions
 
 The following command-line arguments are supported by `train.py`:
 
-+----------------------+---------------------------------------------------------------+
-| **Argument**         | **Description**                                               |
-+======================+===============================================================+
-| `--data`             | Path to the input dataset (e.g., `.h5ad` or `.csv`).          |
-+----------------------+---------------------------------------------------------------+
-| `--reference_gene`   | Path to a CSV file listing all reference genes.               |
-+----------------------+---------------------------------------------------------------+
-| `--output_dir`       | Directory where models, metrics, and spacer scores are saved. |
-+----------------------+---------------------------------------------------------------+
-| `--immune_cell`      | Immune cell type used as bag centers (default: `tcell`).      |
-+----------------------+---------------------------------------------------------------+
-| `--learning_rate`    | Learning rate for the optimizer (default: 0.0001).            |
-+----------------------+---------------------------------------------------------------+
-| `--num_epochs`       | Total number of training epochs (default: 1000).              |
-+----------------------+---------------------------------------------------------------+
-| `--patience`         | Early stopping patience for validation loss (default: 5).     |
-+----------------------+---------------------------------------------------------------+
-| `--delta`            | Minimum improvement to reset early stopping (default: 0.001). |
-+----------------------+---------------------------------------------------------------+
-| `--max_instances`    | Maximum number of instances per bag (optional).               |
-+----------------------+---------------------------------------------------------------+
-| `--n_genes`          | Top N of recruiting cell highly expressed genes to include.   |
-+----------------------+---------------------------------------------------------------+
-| `--selection`        | Select `"positive (induce)"` or `"negative (repel)"` training.|
-+----------------------+---------------------------------------------------------------+
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| **Argument**         | **Description**                                                                                                                    |
++======================+====================================================================================================================================+
+| `--data`             | Path to the input dataset (e.g., `.h5ad` or `.csv`).                                                                               |
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| `--reference_gene`   | Path to a CSV file listing all reference genes.                                                                                    |
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| `--output_dir`       | Directory where models, metrics, and spacer scores are saved.                                                                      |
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| `--engage_cell`      | Engage cell type used as bag centers (default: `tcell`).                                                                           |
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| `--learning_rate`    | Learning rate for the optimizer (default: 0.0001).                                                                                 |
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| `--num_epochs`       | Total number of training epochs (default: 1000).                                                                                   |
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| `--patience`         | Early stopping patience for validation loss (default: 5).                                                                          |
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| `--delta`            | Minimum improvement to reset early stopping (default: 0.001).                                                                      |
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| `--max_instances`    | Maximum number of instances per bag (optional).                                                                                    |
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| `--n_genes`          | Number of top expressed genes in recruiting cell types to include.                                                                 |
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| `--direction`        | Select `"positive (induce)"` or `"negative (repel)"` training.                                                                     |
++----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
 ---
 
@@ -74,7 +74,7 @@ The `train.py` script performs the following steps:
    - `data/human_reference_genes.csv`
 
 2. **Initialize the Model**  
-   Builds a `MIL` (Multi-Instance Learning) model with modules for:
+   Build model structure and initialize parameters with modules for:
    - distance attention  
    - gene expression weighting  
    - spacer moudle scoring
@@ -87,7 +87,7 @@ The `train.py` script performs the following steps:
    Early stopping monitors validation loss (`patience`, `delta`).
 
 5. **Validate and Save Best Model**  
-   Evaluates validation AUROC each epoch and saves the best performing weights as `best_model.pth`.
+   Evaluates validation AUROC for each epoch and saves the best performing weights as `best_model.pth`.
 
 6. **Log Training Metrics**  
    Saves epoch-level metrics (`train_loss`, `val_loss`, `val_AUROC`) to `training_metrics.csv`.
@@ -116,8 +116,8 @@ After training completes, your `output_dir` will contain:
    ├── spacer_score_changes_epoch_2.csv
    └── ...
 
-Each `spacer_score_changes_epoch_X.csv` file summarizes gene-specific immunogenicity
-score shifts during training, sorted by magnitude.
+Each `spacer_score_changes_epoch_X.csv` file summarizes gene-specific spacer scores 
+at each epoch, with the genes sorted by the magnitude of the spacer score
 
 ---
 

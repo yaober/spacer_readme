@@ -1,8 +1,6 @@
 Installation
 ============
 
-.. _installation:
-
 Setting up the Environment
 --------------------------
 
@@ -33,7 +31,7 @@ Clone the official spacer repository and install the package in editable mode:
    (spacer) $ git clone https://github.com/yaober/SPACER.git
    (spacer) $ cd SPACER
 
-After downloading, spacer can be imported:
+After downloading, **spacer** can be imported:
 
 .. code-block:: python
 

@@ -10,7 +10,7 @@ Preprocessing Workflow
 ----------------------
 
 Spacer expects a **Scanpy AnnData** object (`adata`) as input.  
-You can generate this file from raw count matrices using **Scanpy** following these preprocessing steps:
+You can generate this object from raw count matrices using **Scanpy** following these preprocessing steps:
 
 .. code-block:: python
 
